@@ -25,15 +25,10 @@ public class Test2 {
 //
 //            session.getTransaction().commit();
 
-            Employee employee = new Employee("Sam", "Samov", "Sale", 1000);
-            Detail detail = new Detail("Minsk", "12332112", "sam@test.com");
-
-            employee.setEmpDetail(detail);
-            detail.setEmployee(employee);
             session.beginTransaction();
 
-            session.save(detail);
-
+            Detail detail = session.get(Detail.class, 6L);
+            System.out.println(detail.getEmployee());
             session.getTransaction().commit();
         }
         finally {
